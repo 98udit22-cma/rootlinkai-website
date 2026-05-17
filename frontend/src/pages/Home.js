@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import Reveal from "../components/Reveal";
 import RootLinkAnimation from "../components/RootLinkAnimation";
@@ -59,9 +59,6 @@ const quotes = [
 ];
 
 export default function Home() {
-  const navigate = useNavigate();
-  const location = useLocation();
-
   const scrollTo = (id) => (e) => {
     e?.preventDefault();
     const el = document.getElementById(id);
