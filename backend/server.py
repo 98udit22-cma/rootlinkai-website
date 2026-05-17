@@ -47,6 +47,7 @@ class InquiryCreate(BaseModel):
     whatsapp: str = Field(..., min_length=4, max_length=40)
     business_type: str
     needs: str = Field(..., min_length=1, max_length=4000)
+    start_timeline: str = Field(..., min_length=1, max_length=60)
     tools: Optional[str] = Field(default="", max_length=1000)
 
 
@@ -58,6 +59,7 @@ class Inquiry(BaseModel):
     whatsapp: str
     business_type: str
     needs: str
+    start_timeline: Optional[str] = ""
     tools: Optional[str] = ""
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 

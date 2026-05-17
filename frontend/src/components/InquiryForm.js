@@ -5,7 +5,16 @@ import { Check } from "lucide-react";
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
-const BUSINESS_TYPES = ["Consultant", "Coach", "Solopreneur", "Small Agency", "Other"];
+const BUSINESS_TYPES = [
+  "Consultant",
+  "Coach",
+  "Solopreneur",
+  "Product business",
+  "Agency",
+  "Other",
+];
+
+const START_TIMELINES = ["This month", "1–3 months", "Just exploring"];
 
 export default function InquiryForm() {
   const [form, setForm] = useState({
@@ -14,6 +23,7 @@ export default function InquiryForm() {
     whatsapp: "",
     business_type: "",
     needs: "",
+    start_timeline: "",
     tools: "",
   });
   const [loading, setLoading] = useState(false);
@@ -23,7 +33,7 @@ export default function InquiryForm() {
 
   const submit = async (e) => {
     e.preventDefault();
-    if (!form.name || !form.email || !form.whatsapp || !form.business_type || !form.needs) {
+    if (!form.name || !form.email || !form.whatsapp || !form.business_type || !form.needs || !form.start_timeline) {
       toast.error("Please fill all required fields.");
       return;
     }
@@ -143,6 +153,26 @@ export default function InquiryForm() {
           rows={4}
           data-testid="inquiry-needs"
         />
+
+        <label className="eyebrow mt-6">When do you want to get started?</label>
+        <select
+          required
+          value={form.start_timeline}
+          onChange={change("start_timeline")}
+          className="field appearance-none cursor-pointer"
+          data-testid="inquiry-start-timeline"
+          style={{
+            backgroundImage:
+              "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23141210' stroke-width='1.25' fill='none' stroke-linecap='round'/%3E%3C/svg%3E\")",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "right 4px center",
+          }}
+        >
+          <option value="" disabled>Select a timeline</option>
+          {START_TIMELINES.map((t) => (
+            <option key={t} value={t}>{t}</option>
+          ))}
+        </select>
 
         <label className="eyebrow mt-6">Tools you currently use <span className="lowercase tracking-normal text-[11px] text-muted">(optional)</span></label>
         <input
