@@ -22,7 +22,10 @@ const SERVICES_INTERESTED = [
   "AI Content Systems",
   "AI-Powered Website Design",
   "Not sure yet — help me figure out",
+  "Other (please specify)",
 ];
+
+const OTHER_OPTION = "Other (please specify)";
 
 export default function InquiryForm() {
   const [form, setForm] = useState({
@@ -31,6 +34,7 @@ export default function InquiryForm() {
     whatsapp: "",
     business_type: "",
     services_interested: [],
+    services_other: "",
     needs: "",
     start_timeline: "",
     tools: "",
@@ -43,11 +47,16 @@ export default function InquiryForm() {
   const toggleService = (s) => {
     setForm((prev) => {
       const has = prev.services_interested.includes(s);
+      const next = has
+        ? prev.services_interested.filter((x) => x !== s)
+        : [...prev.services_interested, s];
+      // Clear the "other" text when the option is unchecked.
+      const services_other =
+        s === OTHER_OPTION && has ? "" : prev.services_other;
       return {
         ...prev,
-        services_interested: has
-          ? prev.services_interested.filter((x) => x !== s)
-          : [...prev.services_interested, s],
+        services_interested: next,
+        services_other,
       };
     });
   };
@@ -67,6 +76,13 @@ export default function InquiryForm() {
     }
     if (form.services_interested.length === 0) {
       toast.error("Please select at least one service you're interested in.");
+      return;
+    }
+    if (
+      form.services_interested.includes(OTHER_OPTION) &&
+      !form.services_other.trim()
+    ) {
+      toast.error("Please tell me what you're looking for.");
       return;
     }
     setLoading(true);
@@ -213,6 +229,20 @@ export default function InquiryForm() {
               );
             })}
           </div>
+
+          {form.services_interested.includes(OTHER_OPTION) && (
+            <div className="mt-5 pl-[30px]" data-testid="inquiry-services-other-wrap">
+              <input
+                type="text"
+                value={form.services_other}
+                onChange={change("services_other")}
+                placeholder="Tell me what you're looking for"
+                className="field"
+                data-testid="inquiry-services-other"
+                required
+              />
+            </div>
+          )}
         </div>
 
         <label className="eyebrow mt-6">What do you need help with?</label>
