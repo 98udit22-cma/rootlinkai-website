@@ -40,24 +40,6 @@ const steps = [
   { n: "03", title: "Hand off", body: "You get a system you can run yourself, plus support if you want it." },
 ];
 
-const quotes = [
-  {
-    text: "We were stuck running the same five tasks for every client. Within two weeks of working together, half of it ran on its own.",
-    name: "Priya R.",
-    role: "Brand consultant, Mumbai",
-  },
-  {
-    text: "I'd tried setting up Claude three times and kept giving up. They set it up around how I actually think — not how some tutorial said I should.",
-    name: "Arjun M.",
-    role: "Executive coach, Bengaluru",
-  },
-  {
-    text: "Honest, hands-on, no AI theater. Felt like working with a senior colleague who genuinely cared about my business.",
-    name: "Sneha D.",
-    role: "Founder, design studio",
-  },
-];
-
 export default function Home() {
   const scrollTo = (id) => (e) => {
     e?.preventDefault();
@@ -285,21 +267,28 @@ export default function Home() {
             </p>
           </Reveal>
 
-          <div className="mt-16 md:mt-20 grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
-            {quotes.map((q, i) => (
-              <Reveal key={q.name} delay={i * 100}>
-                <figure className="border-t border-hairline pt-8">
-                  <blockquote className="font-serif text-[20px] md:text-[22px] leading-[1.4] text-ink">
-                    “{q.text}”
-                  </blockquote>
-                  <figcaption className="mt-6 text-[14px]">
-                    <span className="text-ink font-medium">{q.name}</span>
-                    <span className="text-muted"> — {q.role}</span>
-                  </figcaption>
-                </figure>
-              </Reveal>
-            ))}
-          </div>
+          <Reveal>
+            <div className="mt-16 md:mt-24 border-t border-hairline pt-12 md:pt-16 max-w-[680px]">
+              <p className="eyebrow mb-6">Building in the open</p>
+              <h3 className="font-serif text-[28px] md:text-[40px] tracking-tight leading-[1.1] text-ink max-w-[20ch]">
+                Onboarding the first founding clients now.
+              </h3>
+              <p className="mt-6 text-[17px] md:text-[18px] text-muted leading-[1.65] max-w-[58ch]">
+                RootlinkAI is new — I'm working with the first cohort of founding clients and sharing
+                what I'm learning along the way. Real case studies and client stories will go here as
+                the work happens. If you want to be part of the founding group, the inquiry form is
+                the way in.
+              </p>
+              <button
+                onClick={scrollTo("inquiry")}
+                data-testid="founding-list-btn"
+                className="btn-moss mt-8"
+              >
+                Join the founding list
+                <ArrowRight size={16} strokeWidth={1.75} />
+              </button>
+            </div>
+          </Reveal>
         </div>
       </section>
 
