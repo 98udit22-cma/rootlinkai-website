@@ -13,8 +13,8 @@ export default function Contact() {
             Tell us what you're working on.
           </h1>
           <p className="mt-8 text-[18px] md:text-[19px] text-muted leading-[1.6] max-w-[58ch]">
-            We reply within 24 hours. No sales sequence, no spam. Just a real conversation about what
-            you're trying to do and whether we're the right fit to help.
+            No sales sequence, no spam. Just a real conversation about what you're trying to do and
+            whether we're the right fit to help.
           </p>
         </Reveal>
 

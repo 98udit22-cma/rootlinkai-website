@@ -53,11 +53,11 @@ export default function InquiryForm() {
           <Check size={20} className="text-paper" strokeWidth={2} />
         </div>
         <h3 className="font-serif text-[28px] md:text-[34px] tracking-tight text-ink leading-[1.15]">
-          Thank you. We've got it.
+          Thanks for reaching out.
         </h3>
-        <p className="mt-4 text-muted max-w-[420px]">
-          We'll read what you sent and reply within 24 hours — from a real person, with a real
-          answer. No drip sequence, no auto-funnel.
+        <p className="mt-4 text-muted max-w-[440px]">
+          I read every inquiry personally and I'll be in touch. No drip sequence, no auto-funnel —
+          just a real reply from a real person.
         </p>
         <p className="mt-6 text-[14px] text-muted">
           In the meantime, you can read about{" "}
@@ -165,7 +165,7 @@ export default function InquiryForm() {
       </button>
 
       <p className="mt-4 text-[13px] text-muted">
-        We reply within 24 hours. No sales sequence, no spam.
+        No sales sequence, no spam. A real reply from a real person.
       </p>
     </form>
   );

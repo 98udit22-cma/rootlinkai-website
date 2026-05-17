@@ -341,7 +341,7 @@ export default function Home() {
             </Reveal>
             <Reveal className="md:col-span-5" delay={120}>
               <p className="font-serif italic text-[22px] md:text-[26px] text-ink leading-[1.35] max-w-[26ch]">
-                We reply within 24 hours.
+                Real replies from a real person.
               </p>
               <p className="mt-5 text-[16px] text-muted leading-[1.65] max-w-[36ch]">
                 No sales sequence, no spam. Just a real conversation about what you're trying to do
