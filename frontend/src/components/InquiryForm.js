@@ -1,9 +1,6 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { toast } from "sonner";
 import { Check } from "lucide-react";
-
-const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
 const BUSINESS_TYPES = [
   "Consultant",
@@ -87,15 +84,31 @@ export default function InquiryForm() {
     }
     setLoading(true);
     try {
-      await axios.post(`${API}/inquiries`, form);
+      const payload = {
+        name: form.name,
+        email: form.email,
+        whatsapp: form.whatsapp,
+        business_type: form.business_type,
+        services_interested: form.services_interested.join(", "),
+        services_other: form.services_other,
+        needs: form.needs,
+        start_timeline: form.start_timeline,
+        tools: form.tools,
+        _subject: `New RootlinkAI inquiry from ${form.name}`,
+      };
+      const res = await fetch("https://formspree.io/f/mnjraoya", {
+        method: "POST",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
       setDone(true);
     } catch (err) {
       console.error(err);
-      const msg =
-        err?.response?.data?.detail?.[0]?.msg ||
-        err?.response?.data?.detail ||
-        "Something went wrong. Please try again.";
-      toast.error(typeof msg === "string" ? msg : "Something went wrong.");
+      toast.error("Something went wrong. Please try again or email me directly.");
     } finally {
       setLoading(false);
     }

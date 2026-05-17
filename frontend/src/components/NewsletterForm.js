@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { toast } from "sonner";
+import { Check } from "lucide-react";
 
-const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+const NEWSLETTER_ENDPOINT = "https://formspree.io/f/mlgvrarg";
 
 export default function NewsletterForm() {
   const [email, setEmail] = useState("");
@@ -17,21 +17,44 @@ export default function NewsletterForm() {
     }
     setLoading(true);
     try {
-      const res = await axios.post(`${API}/newsletter`, { email });
-      if (res.data.status === "already_subscribed") {
-        toast.success("You're already on the list.");
-      } else {
-        toast.success("You're in. Check your inbox in a few weeks.");
-      }
+      const res = await fetch(NEWSLETTER_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          _subject: "New RootlinkAI newsletter signup",
+        }),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
       setSubscribed(true);
       setEmail("");
     } catch (err) {
-      const msg = err?.response?.data?.detail?.[0]?.msg || "Please enter a valid email.";
-      toast.error(typeof msg === "string" ? msg : "Please try again.");
+      console.error(err);
+      toast.error("Something went wrong. Try again in a moment.");
     } finally {
       setLoading(false);
     }
   };
+
+  if (subscribed) {
+    return (
+      <div data-testid="newsletter-success" className="flex items-start gap-3 max-w-[560px]">
+        <span
+          aria-hidden="true"
+          className="inline-flex items-center justify-center w-[26px] h-[26px] bg-moss mt-1 flex-shrink-0"
+          style={{ borderRadius: "2px" }}
+        >
+          <Check size={14} strokeWidth={2.5} className="text-paper" />
+        </span>
+        <p className="text-[17px] md:text-[18px] text-ink leading-[1.55]">
+          Thanks — you're on the list. I'll send the first note soon.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div data-testid="newsletter-block">
@@ -44,6 +67,7 @@ export default function NewsletterForm() {
           <label className="eyebrow block mb-1">Email address</label>
           <input
             type="email"
+            name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="you@domain.com"
@@ -61,9 +85,7 @@ export default function NewsletterForm() {
           {loading ? "Sending…" : "Subscribe to newsletter"}
         </button>
       </form>
-      <p className="mt-4 text-[13px] text-muted">
-        {subscribed ? "Thanks. You're one of the first." : "Be one of the first to join."}
-      </p>
+      <p className="mt-4 text-[13px] text-muted">Be one of the first to join.</p>
     </div>
   );
 }
