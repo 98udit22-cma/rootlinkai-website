@@ -1,0 +1,99 @@
+{
+  "theme_and_archetype": {
+    "theme": "light",
+    "archetype": "Archetype 1 (Organic & Earthy) - Editorial Variant",
+    "description": "A refined, confident, grown-up B2B agency. Clean structure, clarity, and restraint."
+  },
+  "colors": {
+    "background": "#FAF7F2",
+    "primary_text": "#141210",
+    "primary_accent": "#1F3D2F",
+    "secondary_accent": "#C76E3F",
+    "muted_text": "#6B6660",
+    "border": "#E5E0D8",
+    "terracotta_tint": "#FAF1EA"
+  },
+  "typography": {
+    "fonts": {
+      "heading": "'Fraunces', 'Instrument Serif', 'Editorial New', serif",
+      "body": "'Inter', 'Geist', sans-serif"
+    },
+    "scale": {
+      "h1": "text-5xl md:text-6xl lg:text-7xl tracking-tighter",
+      "h2": "text-4xl md:text-5xl tracking-tight",
+      "h3": "text-2xl md:text-3xl tracking-tight",
+      "h4": "text-xl md:text-2xl",
+      "body": "text-[17px] md:text-[18px] leading-[1.6] font-normal",
+      "ui": "text-base font-medium"
+    }
+  },
+  "layout_and_spacing": {
+    "max_width": "max-w-[1100px] mx-auto",
+    "section_spacing": "py-[120px] md:py-[160px]",
+    "container_padding": "px-6 md:px-12",
+    "alignment": "Strictly left-aligned hierarchy. Avoid centering content.",
+    "borders": "1px hairline dividers using #E5E0D8. NO shadows, NO boxy cards."
+  },
+  "motion": {
+    "scroll_entry": "Fade-up with 8px translate-y. Extremely subtle.",
+    "transitions": "200ms duration for colors and hovers.",
+    "hero_animation": "Word 'root' connects to 'link' via a thin drawn line on page load (1.2s). SVG stroke drawing.",
+    "forbidden": "NO parallax, NO zoom, NO autoplay video, NO animated gradients."
+  },
+  "pages_and_sections": {
+    "navigation": "Sticky minimal nav. Wordmark (Rootlink) + AI subtext. Links: Services, About, Contact, CTA ('Book a session').",
+    "homepage": [
+      "Hero: Type-driven, featuring the root->link animation. No hero illustration.",
+      "Who This Is For: 4-up grid with moss green (#1F3D2F) dots as bullets.",
+      "Services: 3 numbered rows (01/02/03) separated by hairline dividers.",
+      "How We Work: 3 horizontal steps, purely text/typographic.",
+      "The 1:1 Session: Terracotta-tinted background (#FAF1EA), 2-column layout.",
+      "Trust: 3 testimonial quotes. Clean typography.",
+      "Newsletter Signup: Terracotta-tinted, inline minimalist form.",
+      "Inquiry Form CTA: Final massive text block leading to form."
+    ],
+    "about_page": "Editorial single column, long-form text, prominent pull quotes.",
+    "services_page": "Expanded sections per service. Clean grid, hairline borders.",
+    "contact_page": "Form + alternative contact block.",
+    "forms": {
+      "inquiry_fields": [
+        "Name",
+        "Email",
+        "WhatsApp",
+        "Business type",
+        "What you need help with",
+        "Tools currently used"
+      ]
+    }
+  },
+  "component_rules": {
+    "buttons": "Flat, primary background #1F3D2F, text #FAF7F2. Hover state background #C76E3F.",
+    "inputs": "Minimalist. border-b only or very thin full borders using #E5E0D8. Focus state border #1F3D2F. No heavy outlines.",
+    "cards": "Do not use traditional shadowed cards. Use structural divs separated by borders.",
+    "footer": "3-column layout. Wordmark+tagline, nav links, LinkedIn social icon."
+  },
+  "image_urls": {
+    "about_textures_and_lifestyle": [
+      {
+        "url": "https://images.unsplash.com/photo-1567016376408-0226e4d0c1ea?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMzJ8MHwxfHNlYXJjaHwxfHxtaW5pbWFsJTIwYXJjaGl0ZWN0dXJlJTIwaW50ZXJpb3IlMjB3YXJtfGVufDB8fHx8MTc3ODk5ODAwOXww&ixlib=rb-4.1.0&q=85",
+        "category": "about_interior",
+        "description": "black and brown leather padded tub sofa - use sparingly as a background or contextual image on the About page."
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1OTV8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjB3b3JraW5nJTIwbWluaW1hbCUyMG5ldXRyYWx8ZW58MHx8fHwxNzc4OTk4MDA5fDA&ixlib=rb-4.1.0&q=85",
+        "category": "professional_working",
+        "description": "white desk lamp beside green plant - use in services or contact page if a clean image is needed."
+      }
+    ]
+  },
+  "instructions_to_main_agent": [
+    "STRICTLY adhere to the exact hex codes provided. Do NOT use Tailwind default colors.",
+    "NO dark mode allowed.",
+    "NO stock photos of robots, headsets, or futuristic AI concepts. Stick to the editorial, high-end agency aesthetic.",
+    "NO gradients.",
+    "NO traditional shadowed cards.",
+    "Use standard HTML/Tailwind for the layout structure, using 1px hairline borders extensively for structure instead of boxes.",
+    "Ensure all interactive elements have a `data-testid` attribute (e.g., `data-testid=\"nav-book-session-button\"`).",
+    "Generate and update files using .js extension (not .tsx), as the project is in JavaScript."
+  ]
+}
