@@ -9,7 +9,7 @@ const BUSINESS_TYPES = [
   "Consultant",
   "Coach",
   "Solopreneur",
-  "Product business",
+  "E-commerce / Product Brand",
   "Agency",
   "Other",
 ];
