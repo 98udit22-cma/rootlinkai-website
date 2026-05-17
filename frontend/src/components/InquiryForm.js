@@ -16,12 +16,21 @@ const BUSINESS_TYPES = [
 
 const START_TIMELINES = ["This month", "1–3 months", "Just exploring"];
 
+const SERVICES_INTERESTED = [
+  "Claude Workspace Setup",
+  "AI Workflows & Automation",
+  "AI Content Systems",
+  "AI-Powered Website Design",
+  "Not sure yet — help me figure out",
+];
+
 export default function InquiryForm() {
   const [form, setForm] = useState({
     name: "",
     email: "",
     whatsapp: "",
     business_type: "",
+    services_interested: [],
     needs: "",
     start_timeline: "",
     tools: "",
@@ -31,10 +40,33 @@ export default function InquiryForm() {
 
   const change = (k) => (e) => setForm({ ...form, [k]: e.target.value });
 
+  const toggleService = (s) => {
+    setForm((prev) => {
+      const has = prev.services_interested.includes(s);
+      return {
+        ...prev,
+        services_interested: has
+          ? prev.services_interested.filter((x) => x !== s)
+          : [...prev.services_interested, s],
+      };
+    });
+  };
+
   const submit = async (e) => {
     e.preventDefault();
-    if (!form.name || !form.email || !form.whatsapp || !form.business_type || !form.needs || !form.start_timeline) {
+    if (
+      !form.name ||
+      !form.email ||
+      !form.whatsapp ||
+      !form.business_type ||
+      !form.needs ||
+      !form.start_timeline
+    ) {
       toast.error("Please fill all required fields.");
+      return;
+    }
+    if (form.services_interested.length === 0) {
+      toast.error("Please select at least one service you're interested in.");
       return;
     }
     setLoading(true);
@@ -142,6 +174,46 @@ export default function InquiryForm() {
             <option key={t} value={t}>{t}</option>
           ))}
         </select>
+
+        <div className="mt-10 pt-8 pb-8 border-t border-b border-hairline" data-testid="inquiry-services-group">
+          <label className="block text-[16px] font-medium text-ink">
+            Which services are you interested in?
+          </label>
+          <p className="text-[13px] text-muted mt-1">Select all that apply</p>
+
+          <div className="mt-5 flex flex-col gap-3">
+            {SERVICES_INTERESTED.map((s) => {
+              const checked = form.services_interested.includes(s);
+              const id = `svc-${s.replace(/[^a-z0-9]/gi, "-").toLowerCase()}`;
+              return (
+                <label
+                  key={s}
+                  htmlFor={id}
+                  className="flex items-center gap-3 cursor-pointer group"
+                >
+                  <span
+                    aria-hidden="true"
+                    className={`inline-flex items-center justify-center w-[18px] h-[18px] border transition-colors duration-200 ${
+                      checked ? "bg-moss border-moss" : "bg-transparent border-hairline group-hover:border-muted"
+                    }`}
+                    style={{ borderRadius: "2px" }}
+                  >
+                    {checked && <Check size={12} strokeWidth={3} className="text-paper" />}
+                  </span>
+                  <input
+                    id={id}
+                    type="checkbox"
+                    className="sr-only"
+                    checked={checked}
+                    onChange={() => toggleService(s)}
+                    data-testid={`inquiry-service-${id}`}
+                  />
+                  <span className="text-[16px] text-ink select-none">{s}</span>
+                </label>
+              );
+            })}
+          </div>
+        </div>
 
         <label className="eyebrow mt-6">What do you need help with?</label>
         <textarea
