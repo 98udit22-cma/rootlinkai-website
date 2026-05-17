@@ -25,6 +25,12 @@ const services = [
     tagline: "Content that sounds and looks like you.",
     body: "We build content systems that handle both sides of your output — written content (LinkedIn posts, newsletters, articles) that captures your voice, and visual content (image ads, short-form video, branded creatives) that captures your look. No generic ChatGPT tone. No template-y AI ad visuals. Built around your brand.",
   },
+  {
+    n: "04",
+    title: "AI-Powered Website Design",
+    tagline: "Websites that tell your actual story.",
+    body: "We design and build AI-powered websites that tell your actual story — not a templated version of it. Crafted visuals, clean copy, and AI tools working behind the scenes so you ship fast without the design quality dropping. For businesses and brands who want a site that sounds and looks like them.",
+  },
 ];
 
 const audience = [
@@ -125,7 +131,7 @@ export default function Home() {
           <Reveal>
             <p className="eyebrow mb-6">Services</p>
             <h2 className="font-serif text-[34px] md:text-[52px] tracking-tight leading-[1.08] text-ink max-w-[16ch]">
-              Three ways we work with you.
+              Four ways we work with you.
             </h2>
           </Reveal>
 

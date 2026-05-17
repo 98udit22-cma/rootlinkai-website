@@ -58,6 +58,24 @@ const detail = [
     outcome:
       "A content engine that produces work that reads and looks unmistakably like you, on a schedule you control.",
   },
+  {
+    n: "04",
+    title: "AI-Powered Website Design",
+    tagline: "Websites that tell your actual story.",
+    intro:
+      "We design and build AI-powered websites that tell your actual story — not a templated version of it. Crafted visuals, clean copy, and AI tools working behind the scenes so you ship fast without the design quality dropping. For businesses and brands who want a site that sounds and looks like them.",
+    includes: [
+      "Story-first messaging and copy that reads like you wrote it",
+      "Custom visual design — no template lock-in, no Framer clone look",
+      "AI-assisted production for faster iteration without losing craft",
+      "Built on a modern stack (React or Framer) you can edit yourself",
+      "Lightweight SEO, OG, and analytics setup at launch",
+    ],
+    forYou:
+      "Founders, consultants, and brand owners whose current site doesn't reflect what they actually do — and who want a real designer in the loop, not a builder template.",
+    outcome:
+      "A site that opens conversations instead of explaining itself. Faster to ship, easier to update, and unmistakably yours.",
+  },
 ];
 
 export default function Services() {
@@ -69,7 +87,7 @@ export default function Services() {
         <Reveal>
           <p className="eyebrow mb-6">Services</p>
           <h1 className="font-serif text-[44px] md:text-[72px] leading-[1.03] tracking-[-0.022em] text-ink max-w-[18ch]">
-            Three ways we work with you, in depth.
+            Four ways we work with you, in depth.
           </h1>
           <p className="mt-8 text-[18px] md:text-[19px] text-muted leading-[1.6] max-w-[58ch]">
             Each engagement is shaped around your business. The structure below is what most clients
@@ -141,7 +159,7 @@ export default function Services() {
             </h2>
             <p className="mt-6 text-[17px] md:text-[18px] text-muted leading-[1.6] max-w-[52ch]">
               Most engagements start the same way: a 90-minute working session to figure out which of
-              the three (or some combination) is actually right for you.
+              the four (or some combination) is actually right for you.
             </p>
             <button
               onClick={() => navigate("/#inquiry")}
