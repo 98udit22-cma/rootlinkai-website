@@ -3,9 +3,10 @@ import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
 const links = [
-  { to: "/services", label: "Services" },
-  { to: "/about", label: "About" },
-  { to: "/contact", label: "Contact" },
+  { kind: "route", to: "/services", label: "Services" },
+  { kind: "route", to: "/about", label: "About" },
+  { kind: "hash", to: "/#newsletter", section: "newsletter", label: "Newsletter" },
+  { kind: "route", to: "/contact", label: "Contact" },
 ];
 
 export default function Nav() {
@@ -20,15 +21,54 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const handleBook = (e) => {
+  const scrollToSection = (id) => (e) => {
     e.preventDefault();
     setOpen(false);
     if (location.pathname === "/") {
-      const el = document.getElementById("inquiry");
+      const el = document.getElementById(id);
       if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
     } else {
-      navigate("/#inquiry");
+      navigate(`/#${id}`);
     }
+  };
+
+  const handleBook = scrollToSection("inquiry");
+
+  const renderLink = (l, mobile = false) => {
+    const baseDesktop = ({ isActive }) =>
+      `text-[14px] font-medium tracking-wide transition-colors duration-200 ${
+        isActive ? "text-moss" : "text-ink hover:text-terra"
+      }`;
+    const mobileCls = "font-serif text-[22px] text-ink";
+
+    if (l.kind === "hash") {
+      return (
+        <a
+          key={l.to}
+          href={l.to}
+          onClick={scrollToSection(l.section)}
+          data-testid={`${mobile ? "nav-mobile-link" : "nav-link"}-${l.label.toLowerCase()}`}
+          className={
+            mobile
+              ? mobileCls
+              : "text-[14px] font-medium tracking-wide text-ink hover:text-terra transition-colors duration-200"
+          }
+        >
+          {l.label}
+        </a>
+      );
+    }
+    return (
+      <NavLink
+        key={l.to}
+        to={l.to}
+        onClick={mobile ? () => setOpen(false) : undefined}
+        data-testid={`${mobile ? "nav-mobile-link" : "nav-link"}-${l.label.toLowerCase()}`}
+        className={mobile ? mobileCls : baseDesktop}
+      >
+        {l.label}
+      </NavLink>
+    );
   };
 
   return (
@@ -50,20 +90,7 @@ export default function Nav() {
           </Link>
 
           <nav className="hidden md:flex items-center gap-10">
-            {links.map((l) => (
-              <NavLink
-                key={l.to}
-                to={l.to}
-                data-testid={`nav-link-${l.label.toLowerCase()}`}
-                className={({ isActive }) =>
-                  `text-[14px] font-medium tracking-wide transition-colors duration-200 ${
-                    isActive ? "text-moss" : "text-ink hover:text-terra"
-                  }`
-                }
-              >
-                {l.label}
-              </NavLink>
-            ))}
+            {links.map((l) => renderLink(l, false))}
             <button
               onClick={handleBook}
               data-testid="nav-book-session-btn"
@@ -86,17 +113,7 @@ export default function Nav() {
 
         {open && (
           <div className="md:hidden pb-6 border-t border-hairline pt-6 flex flex-col gap-5">
-            {links.map((l) => (
-              <NavLink
-                key={l.to}
-                to={l.to}
-                onClick={() => setOpen(false)}
-                data-testid={`nav-mobile-link-${l.label.toLowerCase()}`}
-                className="font-serif text-[22px] text-ink"
-              >
-                {l.label}
-              </NavLink>
-            ))}
+            {links.map((l) => renderLink(l, true))}
             <button
               onClick={handleBook}
               data-testid="nav-mobile-book-btn"

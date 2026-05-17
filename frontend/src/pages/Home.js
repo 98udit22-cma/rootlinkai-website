@@ -298,13 +298,13 @@ export default function Home() {
         <div style={{ backgroundColor: "#FAF1EA" }}>
           <div className="max-w-content mx-auto px-6 md:px-12 py-24 md:py-32">
             <Reveal>
-              <p className="eyebrow mb-6">Notes</p>
+              <p className="eyebrow mb-6">Newsletter</p>
               <h2 className="font-serif text-[34px] md:text-[52px] tracking-tight leading-[1.08] text-ink max-w-[18ch]">
                 Notes on AI, written for builders like you.
               </h2>
               <p className="mt-6 text-[17px] md:text-[18px] text-muted leading-[1.65] max-w-[58ch]">
-                Once a month. One short essay on AI workflows, tools, and what's actually working —
-                for Indian consultants and service businesses. No spam, no fluff.
+                Less hype. More signal. Once a month — what's changing in AI, what's actually
+                working, and what to skip. Written for Indian consultants and service businesses.
               </p>
             </Reveal>
 

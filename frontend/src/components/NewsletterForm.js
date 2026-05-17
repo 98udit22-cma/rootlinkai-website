@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "sonner";
 
@@ -7,15 +7,7 @@ const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 export default function NewsletterForm() {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
-  const [count, setCount] = useState(0);
   const [subscribed, setSubscribed] = useState(false);
-
-  useEffect(() => {
-    axios
-      .get(`${API}/newsletter/count`)
-      .then((r) => setCount(r.data.count || 0))
-      .catch(() => {});
-  }, []);
 
   const submit = async (e) => {
     e.preventDefault();
@@ -30,7 +22,6 @@ export default function NewsletterForm() {
         toast.success("You're already on the list.");
       } else {
         toast.success("You're in. Check your inbox in a few weeks.");
-        setCount((c) => c + 1);
       }
       setSubscribed(true);
       setEmail("");
@@ -67,13 +58,11 @@ export default function NewsletterForm() {
           className="btn-moss"
           data-testid="newsletter-submit"
         >
-          {loading ? "Sending…" : "Subscribe"}
+          {loading ? "Sending…" : "Subscribe to newsletter"}
         </button>
       </form>
       <p className="mt-4 text-[13px] text-muted">
-        {subscribed
-          ? "Thanks. You're one of the first."
-          : `Join ${count} reader${count === 1 ? "" : "s"}. Be one of the first.`}
+        {subscribed ? "Thanks. You're one of the first." : "Be one of the first to join."}
       </p>
     </div>
   );
