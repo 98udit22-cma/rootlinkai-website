@@ -11,13 +11,13 @@ const services = [
     n: "01",
     title: "Claude Workspace Setup",
     tagline: "Claude, set up properly for you.",
-    body: "We configure Claude for the way you work — projects, custom instructions, skills, and integrations with the tools you already use. You stop fumbling and start using it like you've had it for years.",
+    body: "We configure Claude for the way you work — projects, custom instructions, skills, and integrations with the tools you already use. You stop fumbling and start using it like you've had it for years. By the end, Claude works like a senior AI agent for your daily work — not a chatbot you forget about.",
   },
   {
     n: "02",
     title: "AI Workflows & Automation",
     tagline: "Workflows that run themselves.",
-    body: "We design and build no-code automations that handle the repetitive parts of your business — client intake, content pipelines, follow-ups, reporting, lead capture, and the small daily tasks that quietly drain your time. AI does the thinking. Automation does the running. Built around your process, not someone else's template.",
+    body: "We design and build no-code AI agents and automations that handle the repetitive parts of your business — client intake, content pipelines, follow-ups, reporting, lead capture, and the small daily tasks that quietly drain your time. AI does the thinking. Automation does the running. Built around your process, not someone else's template.",
   },
   {
     n: "03",

@@ -9,7 +9,7 @@ const detail = [
     title: "Claude Workspace Setup",
     tagline: "Claude, set up properly for you.",
     intro:
-      "We configure Claude end-to-end so it feels like a colleague who already knows your business, your voice, and the way you make decisions.",
+      "We configure Claude end-to-end so it feels like a colleague who already knows your business, your voice, and the way you make decisions. By the end, Claude works like a senior AI agent for your daily work — not a chatbot you forget about.",
     includes: [
       "Custom instructions tuned to your tone and decision style",
       "Projects scaffolded around your real client work",
@@ -27,7 +27,7 @@ const detail = [
     title: "AI Workflows & Automation",
     tagline: "Workflows that run themselves.",
     intro:
-      "We design and build no-code automations that handle the repetitive parts of your business so you can spend your time on the work only you can do.",
+      "We design and build no-code AI agents and automations that handle the repetitive parts of your business — client intake, content pipelines, follow-ups, reporting, lead capture, and the small daily tasks that quietly drain your time. AI does the thinking. Automation does the running. Built around your process, not someone else's template.",
     includes: [
       "Client intake and onboarding flows",
       "Content pipelines that move from idea to draft to publish",
