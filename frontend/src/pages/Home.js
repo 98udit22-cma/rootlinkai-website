@@ -31,7 +31,8 @@ const audience = [
   "Consultants who want to stop redoing the same workflow",
   "Coaches running 1:1 practices solo",
   "Solopreneurs juggling 5 tools to do 1 job",
-  "Small agencies tired of patching things with Zapier",
+  "Agencies tired of patching things together",
+  "Brand owners who need AI-powered workflows and systems",
 ];
 
 const steps = [
@@ -101,7 +102,7 @@ export default function Home() {
             </h2>
           </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-8 mt-16 md:mt-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-y-10 gap-x-8 mt-16 md:mt-20">
             {audience.map((a, i) => (
               <Reveal key={a} delay={i * 80}>
                 <div className="flex items-start gap-3">
